@@ -195,6 +195,8 @@
     <Content Include="Views\Home\ProductsDB.cshtml" />
     <Content Include="Views\Home\ProductsJSON.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
