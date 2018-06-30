@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WM.Models;
 
 namespace WM.Controllers
 {
@@ -13,18 +16,59 @@ namespace WM.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ProductsDB()
         {
-            ViewBag.Message = "Your application description page.";
+            String connectionString = "Data Source=localhost;port=3306;Initial Catalog=product;User Id=root;password=";
+            String sql = "SELECT * FROM product";
 
-            return View();
+            var model = new List<Product>();
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var product = new Product();
+                    product.ID = (int)rdr["id"];
+                    product.Name = (string)rdr["name"];
+                    product.Description = (string)rdr["description"];
+                    product.Manufacterer = (string)rdr["manufacturer"];
+                    product.Price = (decimal)rdr["price"];
+                    product.Category = (string)rdr["category"];
+                    product.Supplier = (string)rdr["supplier"];
+
+                    model.Add(product);
+                }
+
+            }
+            return View(model);
         }
 
-        public ActionResult Contact()
+        public ActionResult ProductsJSON()
         {
-            ViewBag.Message = "Your contact page.";
+            var model = new List<Product>();
+            List<Models.Product> items;
+            using (System.IO.StreamReader r = new System.IO.StreamReader("file.json"))
+            {
+                string json = r.ReadToEnd();
+                items = JsonConvert.DeserializeObject<List<Models.Product>>(json);
+            }
 
-            return View();
+            foreach (Product i in items)
+            {
+                var product = new Product();
+                product.ID = i.ID;
+                product.Name = i.Name;
+                product.Description = i.Description;
+                product.Manufacterer = i.Manufacterer;
+                product.Price = i.Price;
+                product.Category = i.Category;
+                product.Supplier = i.Supplier;
+
+                model.Add(product);
+            }
+            return View(model);
         }
     }
 }
