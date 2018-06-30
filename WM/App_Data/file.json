@@ -1,0 +1,42 @@
+[ 
+    { "id": "1", 
+      "name": "Iphone 8", 
+      "description": "Iphone 8", 
+      "manufacturer": "Apple", 
+      "supplier": "Gigatron", 
+      "price": "450",
+	  "category": "Technology"	  }, 
+	  
+	  { "id": "2", 
+      "name": "S8", 
+      "description": "S8", 
+      "manufacturer": "Samsung", 
+      "supplier": "Gigatron", 
+      "price": "450",
+	  "category": "Technology"	  }, 
+	  
+	  { "id": "3", 
+      "name": "Headphones", 
+      "description": "Headphones for running", 
+      "manufacturer": "Sony", 
+      "supplier": "Gigatron", 
+      "price": "30",
+	  "category": "Technology"	  }, 
+	  
+	  { "id": "4", 
+      "name": "Keyboard", 
+      "description": "Keyboard for gamming", 
+      "manufacturer": "Dell", 
+      "supplier": "Gigatron", 
+      "price": "75",
+	  "category": "Technology"	  },
+
+	  { "id": "5", 
+      "name": "USB", 
+      "description": "USB 64GB", 
+      "manufacturer": "Kingstone", 
+      "supplier": "Gigatron", 
+      "price": "10",
+	  "category": "Technology"	  }, 	  
+	  
+] 
